@@ -296,7 +296,7 @@ export class HTTPRequest {
     // Request interception is not supported for data: urls.
     if (this._url.startsWith('data:')) return;
     assert(this._allowInterception, 'Request Interception is not enabled!');
-    assert(!this._interceptionHandled, 'Request is already handled!');
+    //assert(!this._interceptionHandled, 'Request is already handled!');
     const { url, method, postData, headers } = overrides;
     this._interceptionHandled = true;
     await this._client
@@ -347,7 +347,7 @@ export class HTTPRequest {
     // Mocking responses for dataURL requests is not currently supported.
     if (this._url.startsWith('data:')) return;
     assert(this._allowInterception, 'Request Interception is not enabled!');
-    assert(!this._interceptionHandled, 'Request is already handled!');
+    //assert(!this._interceptionHandled, 'Request is already handled!');
     this._interceptionHandled = true;
 
     const responseBody: Buffer | null =
@@ -399,7 +399,7 @@ export class HTTPRequest {
     const errorReason = errorReasons[errorCode];
     assert(errorReason, 'Unknown error code: ' + errorCode);
     assert(this._allowInterception, 'Request Interception is not enabled!');
-    assert(!this._interceptionHandled, 'Request is already handled!');
+    //assert(!this._interceptionHandled, 'Request is already handled!');
     this._interceptionHandled = true;
     await this._client
       .send('Fetch.failRequest', {
